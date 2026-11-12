@@ -206,11 +206,12 @@ position
   court's text. Matches respect word boundaries. An ellipsis splits a quote
   into fragments that must appear in order, and the part of a quoted sentence
   it skips must not contain a negation or a qualifier (*nicht*, *nur*,
-  *grundsätzlich*, *in der Regel* …); whole sentences may be left out. A quote that leaves out the denial its sentence starts
-  with (*Es trifft nicht zu, dass …*) is rejected. A fragment that differs only
-  in inflection or punctuation is accepted as close and marked `≈` instead of
-  `✓`. Quotes under five words are rejected. A quote that restates the lower
-  court's or a party's view is shown with a warning.
+  *grundsätzlich*, *in der Regel* …); whole sentences may be left out. A quote
+  that leaves out the denial its sentence starts with (*Es trifft nicht zu,
+  dass …*) is rejected. A fragment that differs only in inflection or
+  punctuation is accepted as close and marked `≈` instead of `✓`. Quotes
+  under five words are rejected. A quote that restates the lower court's or a
+  party's view is shown with a warning.
   ([`verify.py`](src/devils_advocate/verify.py))
 - **Arguments that agree are set aside.** The model labels each proposal as
   contradicting, limiting or supporting the claim. A supporting one is dropped,
@@ -333,8 +334,8 @@ The decisions come from [OpenCaseLaw](https://huggingface.co/datasets/voilaj/swi
 (`voilaj/swiss-caselaw`, file `bge.parquet`), released under CC0. Thanks to its
 maintainers for making Swiss case law available in bulk. The data is not part
 of this repository. `devil fetch` downloads it and, when Hugging Face
-publishes a SHA-256 for the file, checks the download against it. It records the commit and
-the hash. The results in this README were produced from revision `6336cd6`
+publishes a SHA-256 for the file, checks the download against it. It records
+the commit and the hash. The results in this README were produced from revision `6336cd6`
 (SHA-256 `fd363e6c…4931179`, 6,817 decisions, 127,388 passages). To index
 exactly that version:
 
@@ -347,8 +348,8 @@ devil fetch --revision 6336cd66331427f65f7f18379a7f7a0d0105963b
 The design decisions and their trade-offs are written down in
 [`docs/DECISIONS.md`](docs/DECISIONS.md). The tests run without a model or
 the corpus, on synthetic decisions and a scripted model
-([`tests/fakes.py`](tests/fakes.py)). The numbers above come from runs on my
-machine, and their result files are committed.
+([`tests/fakes.py`](tests/fakes.py)). The numbers above come from runs on
+a single local machine, and their result files are committed.
 
 ## License
 

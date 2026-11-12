@@ -78,7 +78,7 @@ with `/sources`.
 The index holds 127,388 passages from 6,817 BGE decisions (2000 onwards).
 Retrieval runs on SQLite FTS5 with BM25 ranking. That needs no model, no GPU
 and no extra service; the benchmark measures 126 ms per query for the top 100
-passages on the development laptop.
+passages on the development machine.
 
 Dense and hybrid retrieval (reciprocal-rank fusion, k = 60) are implemented for
 any OpenAI-compatible embedding endpoint (`devil embed`, `--retriever hybrid`).
@@ -208,9 +208,9 @@ shown.
 The default is Ollama with `qwen3.5:9b`, structured output via `json_schema`,
 and the model's thinking phase switched off (`reasoning_effort: "none"`). In
 one comparison on the development machine that cut a structured call from
-about 15 s to about 1 s, with no loss on this task that we could see. Nothing
-leaves the machine unless `DA_BASE_URL` points elsewhere; only `devil fetch`
-goes to Hugging Face. The HTTP client uses the standard library only.
+about 15 s to about 1 s, with no visible loss on this task. Nothing leaves
+the machine unless `DA_BASE_URL` points elsewhere; only `devil fetch` goes to
+Hugging Face. The HTTP client uses the standard library only.
 
 The prompts need room: a call carries the instructions and the passages
 (eight by default), and the reply comes on top. With Ollama, set
