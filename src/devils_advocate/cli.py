@@ -410,7 +410,9 @@ def _vectors(cfg: config.Config, db: store.Store, *, required: bool) -> VectorIn
 
 
 class _DenseOnly(Retriever):
-    def bm25(self, query, k, exclude=frozenset()):  # noqa: ANN001, ANN201 - same signature as base
+    """A retriever whose BM25 half finds nothing, so that only dense rankings count."""
+
+    def bm25(self, query: str, k: int, exclude: frozenset[str] = frozenset()) -> list[int]:
         return []
 
 
