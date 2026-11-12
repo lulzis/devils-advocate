@@ -211,11 +211,11 @@ about 15 s to about 1 s, with no loss on this task that we could see. Nothing
 leaves the machine unless `DA_BASE_URL` points elsewhere; only `devil fetch`
 goes to Hugging Face. The HTTP client uses the standard library only.
 
-The prompts need room: the largest call in the evaluation took 4,157 tokens,
-prompt and reply. With Ollama, set `OLLAMA_CONTEXT_LENGTH=8192` or more. If the
-model's reply is cut off at the token limit anyway, the devil retries that
-claim once with the better-ranked half of its passages, then gives the claim
-up.
+The prompts need room: a call carries the instructions and the passages
+(eight by default), and the reply comes on top. With Ollama, set
+`OLLAMA_CONTEXT_LENGTH=8192` or more. If the model's reply is cut off at the
+token limit anyway, the devil retries that claim once with the better-ranked
+half of its passages, then gives the claim up.
 
 ## 9. Data provenance is recorded
 

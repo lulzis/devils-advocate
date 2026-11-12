@@ -108,9 +108,10 @@ devil Ein Vertrag braucht nur Konsens.   # opens it with this position
 ```
 
 Give Ollama a context of at least 8,192 tokens, for example by starting it
-with `OLLAMA_CONTEXT_LENGTH=8192 ollama serve`. The largest call in the
-evaluation took 4,157 tokens (prompt and reply). Ollama's default context
-depends on its version and the GPU memory, and can be 4,096 tokens.
+with `OLLAMA_CONTEXT_LENGTH=8192 ollama serve`. A call carries the
+instructions and the passages (eight by default), and the reply comes on
+top. Ollama's default context depends on its version and the GPU memory, and
+can be 4,096 tokens.
 
 Reply to the devil's objections to continue the argument. In the conversation:
 
@@ -253,17 +254,17 @@ passage of the cited Erwägung among the first ten passages?
 | BM25 + translations, Erwägung | **0.400** | 0.479 | **0.243** |
 | queries (decision / Erwägung) | 1,000 / 905 | 662 / 601 | 338 / 304 |
 
-A third of the citations cross languages, mostly a German decision citing a
-French one or the reverse (285 of 338); the rest involve Italian. Lexical search does not match *Kündigung* to
-*résiliation*, so BM25 finds the cited decision for 62 % of same-language
-queries but for only 12 % of cross-language ones. Searching with a German and
-a French translation of each query as well (written by `qwen3.5:9b`) raises
-cross-language recall@10 to 36 %. It costs 6.5 points on same-language
-queries, because the translated rankings carry the same weight in the fusion
-as the original. Overall, recall@10 rises by 4 points, but recall@1 falls
-(0.197 to 0.184) and MRR@10 stays level (0.273 and 0.270): the translations
-bring the cited decision into the first ten more often, not to the top. The
-devil writes its search queries in both languages for the first reason.
+A third of the citations (338 of 1,000) cross languages. Lexical search does
+not match *Kündigung* to *résiliation*, so BM25 finds the cited decision for
+62 % of same-language queries but for only 12 % of cross-language ones.
+Searching with a German and a French translation of each query as well
+(written by `qwen3.5:9b`) raises cross-language recall@10 to 36 %. It costs
+6.5 points on same-language queries, because the translated rankings carry
+the same weight in the fusion as the original. Overall, recall@10 rises by 4
+points, but recall@1 falls (0.197 to 0.184) and MRR@10 stays level (0.273 and
+0.270): the translations bring the cited decision into the first ten more
+often, not to the top. The gain across languages is why the devil writes its
+search queries in both languages.
 
 BM25 takes 126 ms per query, 270 ms with the two translations. Recall@1/5/20,
 MRR@10 and every query with its ranks are in
@@ -293,8 +294,7 @@ supports the claim. Of the 6 quotes discarded, 3 changed a word of the
 passage, 2 were not in it and 1 came with an argument naming another
 decision. The one position missed is the Italian one (*curatela-perizia*): for
 one of its claims the model's reply could not be used, so that claim was
-skipped, and the expected decision was not retrieved for the others. An
-earlier run of nearly the same code found 19 of 22.
+skipped, and the expected decision was not retrieved for the others.
 
 Other decisions may contradict a position just as well, which this count
 misses. In the other direction, the positions were written from the Regeste of
