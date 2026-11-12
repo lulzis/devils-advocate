@@ -54,8 +54,9 @@ STOPWORDS = frozenset(
 )
 TOKEN = re.compile(r"\w+", re.UNICODE)
 MAX_QUERY_TERMS = 40
-# Statutes with a two-letter abbreviation. Kept in a query when written in capitals
-# ("Art. 97 CO"), so that the English "or" and the "a" of "lit. a" are not.
+# Two-letter abbreviations of statutes (OR, BV, CC, CO, CP, LP) and of social
+# insurance branches (IV, UV, EO). Kept in a query when written in capitals
+# ("Art. 97 CO"), so that the English "or" is not.
 ACTS = frozenset("OR BV CC CO CP LP IV UV EO".split())
 # Raised whenever the tables or the cutting of decisions into passages change, so an
 # index built by an earlier version is rebuilt instead of failing on a missing column
