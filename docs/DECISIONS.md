@@ -132,9 +132,10 @@ The Regeste is the headnote that the court publishes with each leading
 decision. It is often the most direct statement of the holding, so it is
 retrieved like any passage. But it summarises the reasoning and is not the
 reasoning itself, so a quote from it is cited as `BGE 146 III 441 (Regeste)`
-instead of with an Erwägung. Regesten of French and Italian decisions are in
-German in the dataset, which also helps across languages; a quote from a
-Regeste is therefore checked with the rules of the language it is written in.
+instead of with an Erwägung. Regesten of French and Italian decisions are
+often in German in the dataset, which also helps across languages; a quote
+from a Regeste is therefore checked with the rules of the language it is
+written in.
 
 Text that the index cannot place under a numbered Erwägung (facts the
 reasoning opens with, a section heading) is cited by page alone, as

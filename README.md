@@ -319,8 +319,9 @@ devil eval                # end to end, updates the badge above
   English position in the evaluation (eviction, BGE 141 III 262) was answered
   with verified quotes, but a single case does not show that English input
   works as well as German or French.
-- The corpus is the published leading decisions (BGE) from 2000 onwards, not
-  the unpublished judgments of the Federal Supreme Court or cantonal courts.
+- The corpus is the leading decisions in the official reports (BGE) from 2000
+  onwards, not the Federal Supreme Court's other judgments and not the
+  decisions of cantonal courts.
 - Passages are found by the Erwägung numbers in scraped text. Where the
   numbering in the source is irregular, a pinpoint can be off even though the
   quote is verbatim.
